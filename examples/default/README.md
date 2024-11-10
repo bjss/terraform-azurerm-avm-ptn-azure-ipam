@@ -1,14 +1,11 @@
 <!-- BEGIN_TF_DOCS -->
 # Default example
 
-This example deploys the module in its simplest form
->It is not recommended for production use.
+This example deploys the module in its simplest form.
 
-It will deploy the IPAM as a publicly exposed WebApp with the UI disabled.
+It will deploy the IPAM as a publicly exposed WebApp with the UI disabled. However, as it deploys without a valid Engine app ID (i.e the example *"00000000-0000-0000-0000-000000000000"* ), the WebApp will be non-functional.
 
->For an functional deployment, replace `engine_app_id` and `engine_secret` with actual App registration details.
-
-![Architecture Diagram](../../docs/public.png "Resulting Architecture")
+For an functional deployment, replace the examples variable inputs with actual App registration details.
 
 ```hcl
 terraform {
@@ -46,6 +43,7 @@ module "regions" {
   source  = "Azure/regions/azurerm"
   version = "~> 0.3"
 }
+
 
 # This allows us to randomize the region for the resource group.
 resource "random_integer" "region_index" {
@@ -89,17 +87,7 @@ No required inputs.
 
 ## Optional Inputs
 
-The following input variables are optional (have default values):
-
-### <a name="input_enable_telemetry"></a> [enable\_telemetry](#input\_enable\_telemetry)
-
-Description: This variable controls whether or not telemetry is enabled for the module.  
-For more information see <https://aka.ms/avm/telemetryinfo>.  
-If it is set to false, then no telemetry will be collected.
-
-Type: `bool`
-
-Default: `true`
+No optional inputs.
 
 ## Outputs
 
